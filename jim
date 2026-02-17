@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazing Thailand - Luxury Travel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #fdfaf6;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* HEADER LUXE */
+        header {
+            background: white;
+            padding: 25px 60px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f5132;
+            letter-spacing: 3px;
+            cursor: pointer;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+        }
+        
+        nav button {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 0;
+            position: relative;
+        }
+        
+        nav button:hover,
+        nav button.active {
+            color: #d4a017;
+        }
+        
+        nav button.active:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #d4a017;
+        }
+        
+        .cta-btn {
+            background: #0f5132;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: background 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background: #d4a017;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(212,160,23,0.1)),
+                        url('https://pixelz.cc/wp-content/uploads/2018/06/wat-arun-buddhist-temple-bangkok-thailand-uhd-4k-wallpaper.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            width: 100%;
+            padding: 80px 60px 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+            max-width: 700px;
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+            max-width: 500px;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .scroll-indicator {
+            color: white;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+        
+        /* SECTIONS */
+        section {
+            display: none;
+        }
+        
+        section.active {
+            display: block;
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* SECTION TITLE */
+        .section-title {
+            text-align: left;
+            margin: 100px 0 50px;
+            padding: 0 60px;
+            font-size: 48px;
+            color: #0f5132;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+        }
+        
+        .section-subtitle {
+            padding: 0 60px;
+            font-size: 14px;
+            color: #999;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            margin-top: -20px;
+        }
+        
+        /* ===== NEW ALTERNATING LAYOUT ===== */
+        .destination-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 80px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-bottom: 1px solid rgba(212, 160, 23, 0.1);
+        }
+        
+        .destination-item:last-child {
+            border-bottom: none;
+        }
+        
+        /* Alternate layout - text on right for odd items */
+        .destination-item:nth-child(odd) {
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        /* Image on right for odd items */
+        .destination-item:nth-child(odd) .destination-image {
+            order: 2;
+        }
+        
+        .destination-item:nth-child(odd) .destination-content {
+            order: 1;
+        }
+        
+        /* For even items, image stays on left */
+        .destination-item:nth-child(even) .destination-image {
+            order: 1;
+        }
+        
+        .destination-item:nth-child(even) .destination-content {
+            order: 2;
+        }
+        
+        .destination-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .destination-item:hover .destination-image {
+            transform: scale(1.04);
+        }
+        
+        .destination-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 44px;
+            color: #0f5132;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        
+        .destination-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .destination-features {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .destination-features li {
+            list-style: none;
+            padding-left: 25px;
+            position: relative;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        
+        .destination-features li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #d4a017;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        /* CONTAINER & CARDS - FOR OTHER SECTIONS */
+        .container {
+            width: 100%;
+            padding: 0 60px 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: all 0.5s ease;
+            position: relative;
+        }
+        
+        .card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 20px 50px rgba(212, 160, 23, 0.2);
+        }
+        
+        .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 40px 30px;
+        }
+        
+        .card-content h3 {
+            color: #0f5132;
+            margin-bottom: 15px;
+            font-size: 24px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+        }
+        
+        .card-content p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .card-content ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .card-content li {
+            padding: 10px 0;
+            padding-left: 20px;
+            position: relative;
+            color: #666;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        
+        .card-content li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #d4a017;
+            font-size: 16px;
+        }
+        
+        /* GRID SECTIONS */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            width: 100%;
+            padding: 0 60px 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 50px;
+            border-radius: 0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .info-card h3 {
+            color: #0f5132;
+            margin-bottom: 25px;
+            font-size: 26px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+        }
+        
+        .info-card p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .info-card ul {
+            list-style: none;
+        }
+        
+        .info-card li {
+            padding: 12px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #666;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+        
+        .info-card li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #d4a017;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* ===== SOCIAL SECTION STYLES ===== */
+        
+        /* Social Media Links Section */
+        .social-media-section {
+            background: linear-gradient(135deg, rgba(15, 81, 50, 0.05), rgba(212, 160, 23, 0.02));
+            padding: 80px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-bottom: 1px solid rgba(212, 160, 23, 0.1);
+        }
+        
+        .social-intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .social-intro h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            color: #0f5132;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .social-intro p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .social-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .social-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 50px rgba(212, 160, 23, 0.2);
+            background: linear-gradient(135deg, rgba(15, 81, 50, 0.02), rgba(212, 160, 23, 0.05));
+        }
+        
+        .social-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-card:hover .social-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .social-card h4 {
+            font-size: 22px;
+            color: #0f5132;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .social-card p {
+            color: #d4a017;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+        
+        .social-hashtag {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        
+        .social-hashtag h5 {
+            font-size: 14px;
+            color: #999;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        
+        .social-hashtag p {
+            font-size: 28px;
+            color: #d4a017;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        /* Social Media Background Images Grid */
+        .social-images-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+        }
+        
+        .social-image-item {
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .social-image-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(212, 160, 23, 0.2);
+        }
+        
+        .social-image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .social-image-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Reviews Carousel Section */
+        .reviews-section {
+            padding: 80px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(15, 81, 50, 0.02), rgba(212, 160, 23, 0.02));
+        }
+        
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .reviews-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            color: #0f5132;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .reviews-header p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        /* Carousel Container */
+        .carousel-container {
+            position: relative;
+            background: white;
+            border-radius: 8px;
+            padding: 50px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .carousel-wrapper {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .review-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+            border: 3px solid #d4a017;
+        }
+        
+        .review-text {
+            font-size: 20px;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.8;
+            max-width: 600px;
+        }
+        
+        .review-text:before,
+        .review-text:after {
+            content: '"';
+            color: #d4a017;
+            font-size: 28px;
+        }
+        
+        .review-rating {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .star {
+            font-size: 24px;
+            color: #d4a017;
+        }
+        
+        .review-author {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0f5132;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Carousel Controls */
+        .carousel-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(212, 160, 23, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .carousel-dot.active {
+            background: #d4a017;
+            transform: scale(1.3);
+        }
+        
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #0f5132;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            z-index: 10;
+        }
+        
+        .carousel-arrow:hover {
+            background: #d4a017;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-arrow.prev {
+            left: 20px;
+        }
+        
+        .carousel-arrow.next {
+            right: 20px;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: #0f5132;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+        
+        footer a {
+            color: #d4a017;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: opacity 0.3s;
+        }
+        
+        footer a:hover {
+            opacity: 0.8;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .destination-item {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 60px 30px;
+            }
+            
+            .destination-item:nth-child(odd) .destination-image {
+                order: 1;
+            }
+            
+            .destination-item:nth-child(odd) .destination-content {
+                order: 2;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-images-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .hero h1 {
+                font-size: 48px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 30px;
+            }
+            
+            .nav-wrapper {
+                gap: 30px;
+            }
+            
+            nav ul {
+                gap: 20px;
+            }
+            
+            nav button {
+                font-size: 11px;
+            }
+            
+            .hero {
+                height: 60vh;
+            }
+            
+            .hero-content {
+                padding: 40px 30px 60px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .section-title {
+                padding: 0 30px;
+                font-size: 28px;
+                margin: 60px 0 30px;
+            }
+            
+            .section-subtitle {
+                padding: 0 30px;
+            }
+            
+            .container,
+            .two-column,
+            .destination-item,
+            .social-media-section,
+            .social-images-grid,
+            .reviews-section {
+                padding: 0 30px 60px;
+            }
+            
+            .destination-item {
+                padding: 40px 30px;
+            }
+            
+            .logo {
+                font-size: 18px;
+            }
+            
+            .destination-content h3 {
+                font-size: 32px;
+            }
+            
+            .destination-image {
+                height: 300px;
+            }
+            
+            .social-grid,
+            .social-images-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .carousel-container {
+                padding: 30px 20px;
+            }
+            
+            .carousel-arrow {
+                padding: 12px 15px;
+                font-size: 18px;
+            }
+            
+            .review-text {
+                font-size: 16px;
+            }
+            
+            .social-intro h3,
+            .reviews-header h3 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">AMAZING THAILAND</div>
+            <div class="nav-wrapper">
+                <nav>
+                    <ul>
+                        <li><button class="nav-btn active" onclick="switchSection('home')">HOME</button></li>
+                        <li><button class="nav-btn" onclick="switchSection('insule')">INSULE</button></li>
+                        <li><button class="nav-btn" onclick="switchSection('experienta')">EXPERIENȚE</button></li>
+                        <li><button class="nav-btn" onclick="switchSection('cultura')">CULTURĂ</button></li>
+                        <li><button class="nav-btn" onclick="switchSection('planificare')">PLANIFICARE</button></li>
+                        <li><button class="nav-btn" onclick="switchSection('social')">SOCIAL</button></li>
+                    </ul>
+                </nav>
+                <button class="cta-btn">EXPLORE</button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- HOME SECTION - REDESIGNED -->
+    <section id="home" class="active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Safe. Ready.<br>Open.</h1>
+                <p class="hero-subtitle">Descoperă frumusețea și magia Asiei de Sud-Est</p>
+                <div class="hero-cta">
+                    <button class="cta-btn">EXPLORE NOW</button>
+                    <div class="scroll-indicator">SCROLL TO CONTINUE</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-subtitle">DESTINAȚII DE TOP</div>
+        <h2 class="section-title">Locuri de Vis pentru Călători</h2>
+        
+        <!-- ALTERNATING LAYOUT -->
+        <div class="destination-item">
+            <img src="https://media.istockphoto.com/id/1462519363/photo/aerial-view-of-the-famous-maya-beach-phi-phi-islands.jpg?s=612x612&w=0&k=20&c=bK03Sw0QSqq9Cj9IkwPG6jDLDoGTAp56bkL3Y8fXJ6Q=" alt="Ko Phi Phi" class="destination-image">
+            <div class="destination-content">
+                <h3>Ko Phi Phi</h3>
+                <p>Insulele Phi Phi sunt faimoase pentru peisajele exotice, stâncile dramatice și apa cristalină. Maya Bay este o atracție de neratat cu plaje spectaculoase și recife de corali bogat populate.</p>
+                <ul class="destination-features">
+                    <li>Maya Bay cu faleze calcaroase și apă turcoaz</li>
+                    <li>Plaja Tonsai cu viață de noapte animată</li>
+                    <li>Snorkeling și scufundări în recife de corali</li>
+                    <li>Drumeții și explorarea insulelor</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="destination-item">
+            <img src="https://a-static.besthdwallpaper.com/city-at-night-in-bangkok-thailand-wallpaper-2880x1800-89508_8.jpg" alt="Bangkok" class="destination-image">
+            <div class="destination-content">
+                <h3>Bangkok</h3>
+                <p>Capitala Thailandei impresionează prin templele aurii, piețele plutitoare și contrastul fascinant dintre tradiție și modernitate. Energia orașului este cu totul unică și captivantă.</p>
+                <ul class="destination-features">
+                    <li>Marele Palat Regal și Wat Phra Kaew spectaculos</li>
+                    <li>Wat Pho și Wat Arun - temple iconice</li>
+                    <li>Piața Chatuchak cu 15.000 standuri</li>
+                    <li>Croaziere pe râul Chao Phraya la apus</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="destination-item">
+            <img src="https://t4.ftcdn.net/jpg/06/58/51/51/360_F_658515183_qtKM9wCGTtHmkmsfIykgTGszusSjfCVn.jpg" alt="Chiang Mai" class="destination-image">
+            <div class="destination-content">
+                <h3>Chiang Mai</h3>
+                <p>Situat în munții din nord, Chiang Mai oferă temple istorice, peisaje montane spectaculoase și experiențe culturale autentice. Este inima spirituală a Thailandei tradiționale.</p>
+                <ul class="destination-features">
+                    <li>Wat Phra That Doi Suthep pe munte</li>
+                    <li>Thapae Walking Street plin de artizani și ateliere</li>
+                    <li>Parcul Național Doi Inthanon cu cascade</li>
+                    <li>Trekking cu elefanți și interacțiune cu comunități locale</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="destination-item">
+            <img src="https://images.unsplash.com/photo-1584314620461-90d4239969cf?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBodWtldHxlbnwwfHwwfHx8MA%3D%3D" alt="Phuket" class="destination-image">
+            <div class="destination-content">
+                <h3>Phuket</h3>
+                <p>Cea mai mare insulă din Thailanda, renumită pentru plajele spectaculoase, viața de noapte vibrantă și apele turcoaz pline de oportunități pentru aventură și relaxare.</p>
+                <ul class="destination-features">
+                    <li>Patong Beach cu cluburi de lux și restaurante fine dining</li>
+                    <li>Laem Phromthep - apusuri spectaculoase și priveliști</li>
+                    <li>Festivalul Vegetarian anual cu tradiții fascinante</li>
+                    <li>Excursii la insulele din apropiere și water sports</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSULE SECTION -->
+    <section id="insule">
+        <div class="section-subtitle">EXPLOREAZĂ INSULELE</div>
+        <h2 class="section-title">Paradisuri Tropicale</h2>
+        <div class="container">
+            <div class="card">
+                <img src="https://media.istockphoto.com/id/1462519363/photo/aerial-view-of-the-famous-maya-beach-phi-phi-islands.jpg?s=612x612&w=0&k=20&c=bK03Sw0QSqq9Cj9IkwPG6jDLDoGTAp56bkL3Y8fXJ6Q=" alt="Ko Phi Phi">
+                <div class="card-content">
+                    <h3>Ko Phi Phi</h3>
+                    <p>Insula Ko Phi Phi se află în Marea Andaman. Renumită pentru plajele cu nisip alb și apele turcoaz. Maya Bay a servit ca decor pentru "The Beach".</p>
+                    <ul>
+                        <li>Plaja Tonsai - viață de noapte</li>
+                        <li>Maya Bay - apă cristalină</li>
+                        <li>Snorkeling în recife de corali</li>
+                        <li>Scufundări și drumeții</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="https://d3h1lg3ksw6i6b.cloudfront.net/media/image/2023/12/05/ae167eeebcf5498ea1c5cddb85f50e0c_A_101_Guide_to_Ko_Samui_A_Tropical_Paradise_of_Leisure_and_Culinary_Delights_%282%29.jpg" alt="Ko Samui">
+                <div class="card-content">
+                    <h3>Ko Samui</h3>
+                    <p>A doua cea mai mare insulă din Thailanda. Oferă plaje frumoase, o viață de noapte vibrantă și un mix perfect de relaxare și aventură.</p>
+                    <ul>
+                        <li>Plaje cu nisip alb și ape calde</li>
+                        <li>Centru modern și cosmopolit</li>
+                        <li>Activități nautice și spa-uri</li>
+                        <li>Viață de noapte de clasă mondială</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="https://www.thailandholidaygroup.com/app/uploads/2020/10/koh-tao_1107242057.jpg" alt="Ko Tao">
+                <div class="card-content">
+                    <h3>Ko Tao</h3>
+                    <p>Insula Ko Tao este paradisul scufundătorilor. Cu apele calde și viul marinou bogat, e locul ideal pentru certificare PADI.</p>
+                    <ul>
+                        <li>Scufundări în apele calde</li>
+                        <li>Instruire PADI profesională</li>
+                        <li>Viul marinou impresionant</li>
+                        <li>Atmosferă relaxată și prietenă</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="https://imgproxy.natucate.com/9PihN0YC9e2sj5p1C05_dmXg5vcnafZRTWsEu1bu-lw/rs:fill/g:ce/w:1780/h:1001/aHR0cHM6Ly93d3cubmF0dWNhdGUuY29tL21lZGlhL3BhZ2VzL2Jsb2cvcmF0Z2ViZXIvYWJkMTAxOWMtOGM1OS00MGE3LWI4YTktYzJkMWI3ZjMxNjZiLzcxYmI5MmJlNjItMTY3OTQ4NTk2MC9ibG9nLXJhdGdlYmVyLXRoYWlsYW5kLWtvLWxhbnRhLWluc2VsLWZlbHNlbi1uYXR1Y2F0ZS5qcGc" alt="Ko Lanta">
+                <div class="card-content">
+                    <h3>Ko Lanta</h3>
+                    <p>O insulă mai puțin cunoscută, dar extrem de frumoasă. Perfectă pentru cei care caută liniște, plaje goale și o viață locală autentică.</p>
+                    <ul>
+                        <li>Plaje virgine și liniștite</li>
+                        <li>Comunități locale autentice</li>
+                        <li>Snorkeling și scufundări</li>
+                        <li>Seturi solare spectaculoase</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- EXPERIENTA SECTION -->
+    <section id="experienta">
+        <div class="section-subtitle">ACTIVITĂȚI UNICE</div>
+        <h2 class="section-title">Experiențe de Neuitat</h2>
+        <div class="two-column">
+            <div class="info-card">
+                <h3>🏄 Sporturi Nautice</h3>
+                <p>Profitează de apele calde ale Thailandei pentru aventuri aquatice neuitabile.</p>
+                <ul>
+                    <li>Snorkeling și scufundări în recife de corali</li>
+                    <li>Surf, windsurfing și kiteboarding</li>
+                    <li>Jet skiing și parasailing</li>
+                    <li>Pescuit și croaziere cu barca</li>
+                    <li>Yoga și meditație pe plajă</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h3>🏔️ Aventuri pe Uscat</h3>
+                <p>Explore munții și jungla pentru experiențe de aventură adevărate.</p>
+                <ul>
+                    <li>Drumeții în munți și parcuri naționale</li>
+                    <li>Înotul în cascadele naturale</li>
+                    <li>Trekking prin jungla virgină</li>
+                    <li>Alpinism și escaladă pe stânci</li>
+                    <li>Observarea faunei sălbatice</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h3>🎨 Experiențe Culturale</h3>
+                <p>Cufundă-te în cultura locală și află tradițiile ancestrale ale Thailandei.</p>
+                <ul>
+                    <li>Vizitarea templelor budiste și ceremonii</li>
+                    <li>Curs de gătit tradițional tailandez</li>
+                    <li>Masaj tradițional și tratamente spa</li>
+                    <li>Ateliere de meșteșuguri locale</li>
+                    <li>Experiență de viață în sate tradiționale</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h3>🌟 Experiențe Speciale</h3>
+                <p>Creeaza amintiri de neuitat cu aceste experiențe unice.</p>
+                <ul>
+                    <li>Elefant trekking și interacțiune cu ele</li>
+                    <li>Mergerea în piețe plutitoare</li>
+                    <li>Târguri de noapte și piețe locale</li>
+                    <li>Spectacole tradiționale Thai boxing</li>
+                    <li>Petreceri de plajă și festivaluri</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CULTURA SECTION -->
+    <section id="cultura">
+        <div class="section-subtitle">MOȘTENIRE CULTURALĂ</div>
+        <h2 class="section-title">Tradițiile Thailandei</h2>
+        <div class="container">
+            <div class="card">
+                <img src="https://img.freepik.com/premium-photo/wat-rong-khun-white-temple-chiang-rai-thailand_34138-634.jpg" alt="Temple Budist">
+                <div class="card-content">
+                    <h3>Temple Budiste</h3>
+                    <p>Temiplele sunt inima spirituală a Thailandei. Cu peste 41.000 de temple în țară, acestea sunt locuri de frumusețe și liniște.</p>
+                    <ul>
+                        <li>Wat Phra Kaew - Templul Jad Regal</li>
+                        <li>Wat Pho - Buddha Culcat imens</li>
+                        <li>Wat Arun - Templul Răsăritului</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="https://media.istockphoto.com/id/1407605545/photo/assorted-thai-foods.jpg?s=612x612&w=0&k=20&c=AFQISoSdErlrRnwPl9SsE0lp3eISd3IM1En9ufWvMYY=" alt="Bucataria Tailandeza">
+                <div class="card-content">
+                    <h3>Bucătărie Traditională</h3>
+                    <p>Bucătăria tailandeză este una dintre cele mai iubite din lume. Cu arame perfect echilibrate și ingrediente proaspete.</p>
+                    <ul>
+                        <li>Pad Thai - mâncare națională</li>
+                        <li>Tom Yum - supă curry și rață</li>
+                        <li>Mango Sticky Rice - desert preferat</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="https://kampatour.com/pic/blog/6bbf5525-62e8-4cdb-a8e0-d076c64ecfdb.png" alt="Cultura Regala">
+                <div class="card-content">
+                    <h3>Cultura Regală</h3>
+                    <p>Regele Thailandei este venereat profund de popor. Marele Palat Regal este o demonstrație a puterii și frumuseții regale.</p>
+                    <ul>
+                        <li>Marele Palat Regal - istorie și arhitectură</li>
+                        <li>Zilele Naționale regale - sărbători importante</li>
+                        <li>Portrete regale în fiecare spațiu public</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="https://guidetourism.net/wp-content/uploads/2023/01/0.Thailands-Handicrafts.jpg" alt="Mestesuturi">
+                <div class="card-content">
+                    <h3>Meștesuguri și Artă</h3>
+                    <p>Tailanda are o tradică artizanală bogată. De la mătase și lăcuire la sculptură și pictură.</p>
+                    <ul>
+                        <li>Inlay și sculptură în lemn</li>
+                        <li>Mătase tailandeză celebră</li>
+                        <li>Ceramică și porțelan tradițional</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- PLANIFICARE SECTION -->
+    <section id="planificare">
+        <div class="section-subtitle">PREGĂTIRE CĂLĂTORIE</div>
+        <h2 class="section-title">Ghid Complet</h2>
+        <div class="two-column">
+            <div class="info-card">
+                <h3>🌤️ Perioada Ideală</h3>
+                <ul>
+                    <li><strong>Sezonul Uscat (noiembrie - februarie):</strong> 25-30°C, vreme perfectă</li>
+                    <li><strong>Sezonul Ploios (mai - octombrie):</strong> Plouă mult, prețuri mai mici</li>
+                    <li><strong>Sezonul Cald (martie - aprilie):</strong> 35-40°C, Songkran festival</li>
+                    <li>Recomandare: noiembrie-februarie este optim</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h3>💰 Ghid Buget (pe zi)</h3>
+                <ul>
+                    <li><strong>Buget Minimal:</strong> 15-20 USD - Hostel, mâncare stradă</li>
+                    <li><strong>Buget Mediu:</strong> 30-50 USD - Hotel 3*, mâncare bună</li>
+                    <li><strong>Buget Confortabil:</strong> 70-150 USD - Hotel 4*, spa</li>
+                    <li><strong>Mâncare stradă:</strong> 1-2 USD per mâncare</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h3>📋 Viză și Documente</h3>
+                <ul>
+                    <li><strong>Români:</strong> 30 zile FĂRĂ VIZĂ</li>
+                    <li><strong>Pasaport:</strong> Valid pentru minim 6 luni</li>
+                    <li><strong>Cardul de turism:</strong> Se completează la sosire</li>
+                    <li><strong>Asigurare:</strong> Foarte recomandată</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h3>🚗 Transport & Mobilitate</h3>
+                <ul>
+                    <li><strong>Avion:</strong> Zboruri ieftine între orașe (2-5 ore)</li>
+                    <li><strong>Autobuz:</strong> Rețea vastă și confortabilă</li>
+                    <li><strong>Tren:</strong> Linii principale de pasageri</li>
+                    <li><strong>Taxi/Grab:</strong> Ieftin și sigur</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- SOCIAL SECTION - COMPLETELY REDESIGNED -->
+    <section id="social">
+        <!-- SOCIAL MEDIA LINKS SECTION -->
+        <div class="social-media-section">
+            <div class="social-intro">
+                <h3>Urmărește-ne pe Rețelele Sociale</h3>
+                <p>Fii la curent cu cele mai frumoase destinații, festivaluri tradiționale și experiențe autentice din Thailanda. Conectează-te cu o comunitate de călători și descoperă povești inspiratoare.</p>
+            </div>
+            
+            <div class="social-grid">
+                <div class="social-card">
+                    <div class="social-icon">📸</div>
+                    <h4>Instagram</h4>
+                    <p>@AmazingThailand_jim</p>
+                </div>
+                
+                <div class="social-card">
+                    <div class="social-icon">👥</div>
+                    <h4>Facebook</h4>
+                    <p>Tourism_Thailand_cuJIM</p>
+                </div>
+                
+                <div class="social-card">
+                    <div class="social-icon">▶️</div>
+                    <h4>YouTube</h4>
+                    <p>Amazing Thailand Official</p>
+                </div>
+            </div>
+            
+            <div class="social-hashtag">
+                <h5>Hashtag Oficial</h5>
+                <p>#AmazingThailand</p>
+            </div>
+        </div>
+        
+        <!-- SOCIAL MEDIA IMAGES GRID -->
+        <div class="social-images-grid">
+            <div class="social-image-item">
+                <img src="https://images2.alphacoders.com/127/1274819.jpg" alt="Thailand Landscape">
+            </div>
+            <div class="social-image-item">
+                <img src="https://wallpapercat.com/w/full/c/9/6/123431-3840x2160-desktop-4k-thailand-wallpaper-photo.jpg" alt="Thailand Beach">
+            </div>
+            <div class="social-image-item">
+                <img src="https://buckets-landing.s3.ap-southeast-1.amazonaws.com/tat-images/home/seasons/Img_May2024.jpg" alt="Thailand Festival">
+            </div>
+        </div>
+        
+        <!-- REVIEWS SECTION -->
+        <div class="reviews-section">
+            <div class="reviews-header">
+                <h3>Experiențele Turiștilor Noștri</h3>
+                <p>Citește povești inspiratoare de la călătorii care au descoperit magia Thailandei</p>
+            </div>
+            
+            <div class="carousel-container">
+                <div class="carousel-wrapper" id="carouselWrapper">
+                    <!-- SLIDE 1 -->
+                    <div class="carousel-slide">
+                        <img src="https://i.pravatar.cc/80?img=1" alt="Maria" class="review-avatar">
+                        <div class="review-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="review-text">Thailanda este combinația perfectă între relaxare și aventură. Peisajele spectaculoase și ospitalitatea oamenilor m-au lăsat fără cuvinte!</p>
+                        <p class="review-author">Maria Popescu</p>
+                    </div>
+                    
+                    <!-- SLIDE 2 -->
+                    <div class="carousel-slide">
+                        <img src="https://i.pravatar.cc/80?img=2" alt="Alex" class="review-avatar">
+                        <div class="review-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="review-text">Oamenii sunt extrem de prietenoși și cultura este fascinantă. Fiecare moment petrecut aici a fost o nouă descoperire și o nouă amintire de neuitat.</p>
+                        <p class="review-author">Ion Diaconu</p>
+                    </div>
+                    
+                    <!-- SLIDE 3 -->
+                    <div class="carousel-slide">
+                        <img src="https://i.pravatar.cc/80?img=3" alt="Elena" class="review-avatar">
+                        <div class="review-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="review-text">Plajele din Phi Phi sunt cele mai frumoase pe care le-am văzut vreodată. Snorkeling-ul a fost o experiență incredibilă, și mâncarea locală este absolut delicioasă!</p>
+                        <p class="review-author">Andreea Mihai</p>
+                    </div>
+                    
+                    <!-- SLIDE 4 -->
+                    <div class="carousel-slide">
+                        <img src="https://i.pravatar.cc/80?img=4" alt="Cristian" class="review-avatar">
+                        <div class="review-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="review-text">Ceea ce m-a marcat cel mai mult a fost spiritualitatea locului. Tempolele sunt pur frumoase, iar meditația la apus a fost transformatoare pentru sufletul meu.</p>
+                        <p class="review-author">Cristian Vasilescu</p>
+                    </div>
+                    
+                    <!-- SLIDE 5 -->
+                    <div class="carousel-slide">
+                        <img src="https://i.pravatar.cc/80?img=5" alt="Sorin" class="review-avatar">
+                        <div class="review-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="review-text">Bangkok este o explozie de culori, miresme și gusturi. Viața de noapte este vibrantă, iar prin zi poti descoperi temple ascunse și piețe locale autentice.</p>
+                        <p class="review-author">Sorin Popescu</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation Arrows -->
+                <button class="carousel-arrow prev" onclick="slideCarousel(-1)">❮</button>
+                <button class="carousel-arrow next" onclick="slideCarousel(1)">❯</button>
+                
+                <!-- Navigation Dots -->
+                <div class="carousel-nav">
+                    <div class="carousel-dot active" onclick="goToSlide(0)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(1)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(2)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(3)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(4)"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        © 2026 Amazing Thailand | Explorează Frumusețea Asiei de Sud-Est<br>
+        <a href="https://www.tatnews.org/" target="_blank">TAT Oficial</a> | 
+        <a href="https://thailand.prd.go.th/" target="_blank">Guvernul Thailandei</a>
+    </footer>
+    
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 5;
+        let autoSlideInterval;
+        
+        function switchSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update active button
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Reset carousel if going to social section
+            if (sectionId === 'social') {
+                resetAutoSlide();
+            }
+        }
+        
+        function slideCarousel(direction) {
+            currentSlide += direction;
+            if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            } else if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            }
+            updateCarousel();
+            resetAutoSlide();
+        }
+        
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
+            resetAutoSlide();
+        }
+        
+        function updateCarousel() {
+            const wrapper = document.getElementById('carouselWrapper');
+            const offset = currentSlide * -100;
+            wrapper.style.transform = `translateX(${offset}%)`;
+            
+            // Update dots
+            const dots = document.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.remove('active');
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+        
+        function autoSlide() {
+            slideCarousel(1);
+        }
+        
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(autoSlide, 4000);
+        }
+        
+        // Start auto-slide when page loads
+        window.addEventListener('load', function() {
+            autoSlideInterval = setInterval(autoSlide, 4000);
+        });
+    </script>
+</body>
+</html>
